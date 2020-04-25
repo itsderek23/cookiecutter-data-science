@@ -106,7 +106,9 @@ class TestCookieSetup(object):
             'src/visualization',
         ]
 
-        # TODO - add 'venv' if setup == True
+        # Running setup is slow, so by default setup=False.
+        if pytest.param.get("setup"):
+            expected_dirs.append("venv")
 
         ignored_dirs = [
             str(self.path)
