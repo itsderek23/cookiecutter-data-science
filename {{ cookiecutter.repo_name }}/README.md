@@ -1,5 +1,12 @@
-{{cookiecutter.project_name}}
-==============================
+# {{cookiecutter.project_name}}
+
+## venv
+
+This project uses `venv` to isolate Python dependencies. To activate:
+
+    source venv/bin/activate
+
+
 
 {{cookiecutter.description}}
 

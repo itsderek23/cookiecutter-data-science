@@ -8,18 +8,11 @@ _A logical, reasonably standardized, but flexible project structure for doing an
 
 ### Requirements to use the cookiecutter template:
 -----------
- - Python 2.7 or 3.5
- - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
+ - Python 3.5 or greater
+ - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip:
 
 ``` bash
 $ pip install cookiecutter
-```
-
-or
-
-``` bash
-$ conda config --add channels conda-forge
-$ conda install cookiecutter
 ```
 
 
@@ -29,13 +22,10 @@ $ conda install cookiecutter
     cookiecutter https://github.com/itsderek23/cookiecutter-data-science
 
 
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
-
-
 ### The resulting directory structure
 ------------
 
-The directory structure of your new project looks like this: 
+The directory structure of your new project looks like this:
 
 ```
 ├── LICENSE

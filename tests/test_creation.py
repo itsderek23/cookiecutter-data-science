@@ -27,8 +27,7 @@ class TestCookieSetup(object):
     def test_project_name(self):
         project = self.path
         if pytest.param.get('project_name'):
-            name = system_check('DrivenData')
-            assert project.name == name
+            assert project.name == pytest.param.get('project_name')
         else:
             assert project.name == 'project_name'
 
@@ -47,7 +46,7 @@ class TestCookieSetup(object):
         assert no_curlies(readme_path)
         if pytest.param.get('project_name'):
             with open(readme_path) as fin:
-                assert 'DrivenData' == next(fin).strip()
+                assert pytest.param.get('project_name') in next(fin).strip()
 
     def test_setup(self):
         setup_ = self.path / 'setup.py'
@@ -73,7 +72,7 @@ class TestCookieSetup(object):
         reqs_path = self.path / 'requirements.txt'
         assert reqs_path.exists()
         assert no_curlies(reqs_path)
-        if pytest.param.get('python_interpreter'):
+        if pytest.param.get('python_interpreter') == 'python':
             with open(reqs_path) as fin:
                 lines = list(map(lambda x: x.strip(), fin.readlines()))
             assert 'pathlib2' in lines
@@ -82,6 +81,10 @@ class TestCookieSetup(object):
         makefile_path = self.path / 'Makefile'
         assert makefile_path.exists()
         assert no_curlies(makefile_path)
+
+    # def test_make_setup(self):
+    #     print("list(zip(*os.walk(self.path))):",list(zip(*os.walk(self.path))))
+    #     assert False
 
     def test_folders(self):
         expected_dirs = [
@@ -103,6 +106,8 @@ class TestCookieSetup(object):
             'src/visualization',
         ]
 
+        # TODO - add 'venv' if setup == True
+
         ignored_dirs = [
             str(self.path)
         ]
@@ -110,4 +115,3 @@ class TestCookieSetup(object):
         abs_expected_dirs = [str(self.path / d) for d in expected_dirs]
         abs_dirs, _, _ = list(zip(*os.walk(self.path)))
         assert len(set(abs_expected_dirs + ignored_dirs) - set(abs_dirs)) == 0
-
