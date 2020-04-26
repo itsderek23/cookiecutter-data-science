@@ -77,15 +77,6 @@ class TestCookieSetup(object):
                 lines = list(map(lambda x: x.strip(), fin.readlines()))
             assert 'pathlib2' in lines
 
-    def test_makefile(self):
-        makefile_path = self.path / 'Makefile'
-        assert makefile_path.exists()
-        assert no_curlies(makefile_path)
-
-    # def test_make_setup(self):
-    #     print("list(zip(*os.walk(self.path))):",list(zip(*os.walk(self.path))))
-    #     assert False
-
     def test_folders(self):
         expected_dirs = [
             'data',

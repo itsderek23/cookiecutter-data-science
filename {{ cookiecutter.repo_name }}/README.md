@@ -1,5 +1,21 @@
 # {{cookiecutter.project_name}}
 
+## Prerequisites
+
+The following is required to run this project:
+
+* Git
+* Python 3.6+
+* A Linux-based OS
+
+## Setup
+
+After cloning a copy of this repository, run:
+
+    scripts/install.py
+
+The install script creates a `venv`, installs the Python dependencies specified, and initializes DVC.
+
 ## venv
 
 This project uses `venv` to isolate Python dependencies. To activate:
