@@ -81,9 +81,9 @@ class TestCookieSetup(object):
         # Running setup is slow, so by default setup=False.
         if not pytest.param.get("setup"):
             return
-        print(os.system("pwd"))
-        print(os.system("ls -lath"))
-        check_output([self.path / 'script/install.py'])
+        # print(os.system("pwd"))
+        # print(os.system("ls {} -lath".format(self.path)))
+        check_output(['scripts/install.py'], cwd=self.path)
 
 
     def test_folders(self):
