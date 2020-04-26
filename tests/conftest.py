@@ -28,6 +28,7 @@ def default_baked_project(tmpdir_factory, request):
     out_dir = Path(temp).resolve()
 
     pytest.param = request.param
+    print("Creating test project in {}",out_dir)
     main.cookiecutter(
         str(CCDS_ROOT),
         no_input=True,
@@ -45,4 +46,4 @@ def default_baked_project(tmpdir_factory, request):
     yield
 
     # cleanup after
-    shutil.rmtree(out_dir)
+    # shutil.rmtree(out_dir)
