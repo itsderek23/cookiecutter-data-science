@@ -1,5 +1,6 @@
 import os
 import pytest
+import datetime as dt
 from subprocess import check_output
 from conftest import system_check
 
@@ -21,6 +22,18 @@ def no_curlies(filepath):
     template_strings_in_file = [s in data for s in template_strings]
     return not any(template_strings_in_file)
 
+def changed_files(root_path,ago):
+    now = dt.datetime.now()
+    changed_files = []
+    for root, dirs,files in os.walk(root_path):
+        for fname in files:
+            path = os.path.join(root, fname)
+            st = os.stat(path)
+            mtime = dt.datetime.fromtimestamp(st.st_mtime)
+            if mtime > ago:
+                changed_files.append(path)
+                print('%s modified %s'%(path, mtime))
+    return changed_files
 
 @pytest.mark.usefixtures("default_baked_project")
 class TestCookieSetup(object):
@@ -81,10 +94,11 @@ class TestCookieSetup(object):
         # Running setup is slow, so by default setup=False.
         if not pytest.param.get("setup"):
             return
-        # print(os.system("pwd"))
-        # print(os.system("ls {} -lath".format(self.path)))
-        check_output(['scripts/install.py'], cwd=self.path)
 
+        ago = dt.datetime.now()
+        check_output(['scripts/install.py'], cwd=self.path)
+        changed = changed_files(self.path,ago)
+        assert len(changed) == 0, "Files were modified: {}".format(changed)
 
     def test_folders(self):
         expected_dirs = [
