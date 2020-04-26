@@ -1,0 +1,22 @@
+# Based on https://qxf2.com/blog/tox-with-circleci/
+version: 2
+
+jobs:
+
+  toxify:
+
+      docker:
+        - image: themattrix/tox
+
+      steps:
+        - checkout
+        - run: pip install tox
+        - run: git clone https://github.com/itsderek23/cookiecutter-data-science.git
+        - run: tox
+
+workflows:
+  version: 2
+
+  myproj:
+    jobs:
+      - toxify
