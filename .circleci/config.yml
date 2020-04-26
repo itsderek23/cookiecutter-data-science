@@ -11,7 +11,7 @@ jobs:
             PIPENV_VENV_IN_PROJECT: true
       steps:
         - checkout
-        - run: pip install tox
+        - run: sudo pip install tox
         - run: tox
 
 workflows:
