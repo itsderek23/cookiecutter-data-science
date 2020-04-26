@@ -15,7 +15,10 @@ def exec(desc,cmd):
 
 exec("Setting up venv","python3 -m venv venv")
 exec("Installing Python dependencies via pip","source venv/bin/activate ; pip install -r requirements.txt > /dev/null")
-exec("Initializing the Git repo", "git init")
-exec("Initializing DVC","source venv/bin/activate ; dvc init > /dev/null")
-exec("Installing Git hooks into the DVC repository","source venv/bin/activate ; dvc install > /dev/null")
+if os.system('git rev-parse > /dev/null 2>&1') != 0:
+    exec("Initializing the Git repo", "git init")
+if os.system("dvc status > /dev/null 2>&1") != 0:
+    exec("Initializing DVC","source venv/bin/activate ; dvc init > /dev/null")
+if not os.path.isfile(".git/hooks/post-checkout"):
+    exec("Installing Git hooks into the DVC repository","source venv/bin/activate ; dvc install > /dev/null")
 print("👍 Install completed.")
