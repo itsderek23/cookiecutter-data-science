@@ -14,11 +14,11 @@ def exec(desc,cmd):
         raise SystemExit("💣 Aborting install. An error occurred running the install script.")
 
 exec("Setting up venv","python3 -m venv venv")
-exec("Installing Python dependencies via pip","source venv/bin/activate ; pip install -r requirements.txt > /dev/null")
+exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt > /dev/null")
 if os.system('git rev-parse > /dev/null 2>&1') != 0:
     exec("Initializing the Git repo", "git init")
-if os.system("source venv/bin/activate ; dvc status > /dev/null 2>&1") != 0:
-    exec("Initializing DVC","source venv/bin/activate ; dvc init > /dev/null")
+if os.system("venv/bin/dvc status > /dev/null 2>&1") != 0:
+    exec("Initializing DVC","venv/bin/dvc init > /dev/null")
 if not os.path.isfile(".git/hooks/post-checkout"):
-    exec("Installing Git hooks into the DVC repository","source venv/bin/activate ; dvc install > /dev/null")
+    exec("Installing Git hooks into the DVC repository","venv/bin/dvc install > /dev/null")
 print("👍 Install completed.")
