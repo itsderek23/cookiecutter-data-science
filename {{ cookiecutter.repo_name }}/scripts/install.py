@@ -21,6 +21,8 @@ print(os.getcwd())
 print("ls -lath---")
 print(os.system("ls -lath"))
 exec("Setting up venv","python -m venv {}/venv".format(os.getcwd()))
+os.system("touch blah.txt")
+print(os.system("ls -lath"))
 exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt > /dev/null")
 if os.system('git rev-parse > /dev/null 2>&1') != 0:
     exec("Initializing the Git repo", "git init")
