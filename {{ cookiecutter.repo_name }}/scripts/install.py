@@ -12,8 +12,14 @@ def exec(desc,cmd):
     else:
         print("⚠️  (exit code= {})".format(exit_code))
         raise SystemExit("💣 Aborting install. An error occurred running the install script.")
-print("pwd",os.system("pwd"))
-print("ls -lath", os.system("ls -lath"))
+print("python---")
+print(os.system("which python"))
+print("pwd---")
+print(os.system("pwd"))
+print("cwd---")
+print(os.getcwd())
+print("ls -lath---")
+print(os.system("ls -lath"))
 exec("Setting up venv","python3 -m venv venv")
 exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt > /dev/null")
 if os.system('git rev-parse > /dev/null 2>&1') != 0:

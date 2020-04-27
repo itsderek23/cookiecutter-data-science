@@ -28,7 +28,7 @@ def default_baked_project(tmpdir_factory, request):
     out_dir = Path(temp).resolve()
 
     pytest.param = request.param
-    print("Creating test project in {}",out_dir)
+    print("Creating test project in {}".format(out_dir))
 
     main.cookiecutter(
         str(CCDS_ROOT),
