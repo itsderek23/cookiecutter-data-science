@@ -12,6 +12,6 @@ jobs:
             path: test_results
 workflows:
   version: 2
-  myproj:
+  tests:
     jobs:
       - test
