@@ -26,7 +26,7 @@ print("AFTER venv: ls -lath---")
 print(os.system("ls -lath"))
 print("venv ls ---")
 print(os.system("ls venv/bin/ -lath"))
-exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt > /dev/null")
+exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt")
 if os.system('git rev-parse > /dev/null 2>&1') != 0:
     exec("Initializing the Git repo", "git init")
 if os.system("venv/bin/dvc status > /dev/null 2>&1") != 0:

@@ -10,3 +10,5 @@ tests/__pycache__/*
 
 .tox/
 venv/
+
+test_results/

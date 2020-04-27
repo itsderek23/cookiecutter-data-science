@@ -7,7 +7,9 @@ jobs:
       steps:
         - checkout
         - run: pip install -r requirements.txt --user
-        - run: pytest -s
+        - run: pytest -s --junitxml=test_results/pytest/pytest-report.xml
+        - store_test_results:
++          path: test_results
 workflows:
   version: 2
   myproj:

@@ -47,4 +47,4 @@ def default_baked_project(tmpdir_factory, request):
     yield
 
     # cleanup after
-    # shutil.rmtree(out_dir)
+    shutil.rmtree(out_dir)
