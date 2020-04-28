@@ -16,6 +16,12 @@ After cloning a copy of this repository, run:
 
 The install script creates a `venv`, installs the Python dependencies specified, and initializes DVC.
 
+## Available commands
+
+Run:
+
+    inv --list
+
 ## venv
 
 This project uses `venv` to isolate Python dependencies. To activate:

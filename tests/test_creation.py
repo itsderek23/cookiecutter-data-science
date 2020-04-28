@@ -92,6 +92,11 @@ class TestCookieSetup(object):
                 lines = list(map(lambda x: x.strip(), fin.readlines()))
             assert 'pathlib2' in lines
 
+    # def  test_app_starts(self):
+        # Fails:
+        # ModuleNotFoundError: No module named 'flask'
+        # check_output(['venv/bin/inv', 'app.test'], cwd=self.path)
+
     def test_idempotent_install_script(self):
         # Running setup is slow, so by default setup=False.
         if not pytest.param.get("setup"):
@@ -103,14 +108,12 @@ class TestCookieSetup(object):
         # Script appears to update some files but unsure if that changes any functionality.
         # assert len(changed) == 0, "Files were modified: {}".format(changed)
 
-    def test_notebook_executes(self):
+    def test_notebook_runs(self):
         # Running setup is slow, so by default setup=False.
         if not pytest.param.get("setup"):
             return
-        # Error:
-        #  FileNotFoundError: [Errno 2] No such file or directory: 'jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1000 --execute notebooks/example.ipynb': 'jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1000 --execute notebooks/example.ipynb'
-        # check_output(["jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1000 --execute notebooks/example.ipynb"],
-        #              cwd=self.path)
+        check_output(["venv/bin/inv", "notebooks.run", "notebooks/example.ipynb"],
+                     cwd=self.path)
 
     def test_folders(self):
         expected_dirs = [

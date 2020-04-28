@@ -55,6 +55,8 @@ def exec_setup(nbenv):
     # https://github.com/jupyter/notebook/issues/4567
     exec("Setting up venv for Jupyter Notebooks","venv/bin/python -m ipykernel install --user --name={}".format(nbenv))
     set_example_notebook_kernel(nbenv)
+    # direnv will fail if not installed
+    os.system("direnv allow . > /dev/null 2>&1")
 
 def set_example_notebook_kernel(nbenv):
     # Read in the file
