@@ -20,7 +20,16 @@ The install script creates a `venv`, installs the Python dependencies specified,
 
 Run:
 
-    inv --list
+```
+inv --list
+Available tasks:
+
+app.create      Create a Heroku app for the web service.
+app.destroy     Delete the Heroku app.
+app.start       Start the web service serving model inference.
+app.test        Run the web service unit tests.
+notebooks.run   Run a notebook from the command line.
+```
 
 ## venv
 
