@@ -1,20 +1,18 @@
-# Cookiecutter Data Science
+# Booklet Flow Data Science Project Template
 
-_A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
+[![<ORG_NAME>](https://circleci.com/github/itsderek23/cookiecutter-data-science.svg?style=svg)](https://app.circleci.com/pipelines/github/itsderek23/cookiecutter-data-science?branch=master)
 
+This is a fork of the excellent [Cookiecutter Data Science](https://github.com/drivendata/cookiecutter-data-science), focusing on creating a smooth CD4ML experience for data scientists.
 
-#### [Project homepage](http://drivendata.github.io/cookiecutter-data-science/)
+## Requirements
 
-
-### Requirements to use the cookiecutter template:
------------
  - Python 3.5 or greater
+ - Git
  - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip:
 
 ``` bash
 $ pip install cookiecutter
 ```
-
 
 ### To start a new project, run:
 ------------
@@ -29,7 +27,6 @@ The directory structure of your new project looks like this:
 
 ```
 ├── LICENSE
-├── Makefile           <- Makefile with commands like `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
 │   ├── external       <- Data from third party sources.
@@ -73,16 +70,10 @@ The directory structure of your new project looks like this:
 └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
 ```
 
-## Contributing
-
-We welcome contributions! [See the docs for guidelines](https://drivendata.github.io/cookiecutter-data-science/#contributing).
-
 ### Installing development requirements
-------------
 
     pip install -r requirements.txt
 
 ### Running the tests
-------------
 
-    py.test tests
+    pytest -s
