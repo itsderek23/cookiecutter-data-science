@@ -1,6 +1,6 @@
 # Booklet Flow Data Science Project Template
 
-[![<ORG_NAME>](https://circleci.com/github/itsderek23/cookiecutter-data-science.svg?style=svg)](https://app.circleci.com/pipelines/github/itsderek23/cookiecutter-data-science?branch=master)
+[![booklet flow](https://circleci.com/gh/itsderek23/cookiecutter-data-science.svg?style=svg)](https://app.circleci.com/pipelines/github/itsderek23/cookiecutter-data-science?branch=master)
 
 This is a fork of the excellent [Cookiecutter Data Science](https://github.com/drivendata/cookiecutter-data-science), focusing on creating a smooth CD4ML experience for data scientists.
 
