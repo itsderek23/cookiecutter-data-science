@@ -14,6 +14,10 @@ This is a fork of the excellent [Cookiecutter Data Science](https://github.com/d
 $ pip install cookiecutter
 ```
 
+## Optional
+
+[Direnv](https://direnv.net/) to load project-specific environment variables plus auto activate and deactivate the `venv`.
+
 ### To start a new project, run:
 ------------
 
@@ -42,6 +46,8 @@ The directory structure of your new project looks like this:
 │
 ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
 │
+├── .envrc             <- Load project-specific environment variables plus
+│                         auto activate and deactivate the venv with https://direnv.net/.
 ├── models             <- Trained and serialized models, model predictions, or model summaries
 │
 ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
