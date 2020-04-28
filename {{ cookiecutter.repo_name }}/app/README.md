@@ -36,14 +36,3 @@ From the project root:
 ```
 inv app.create [HEROKU APP NAME]
 ```
-
-If an app name isn't provided, `inv app.create` attempts to find an APP_NAME environment variable and creates the app using that name.
-
-```
-APP_NAME=nlp-disaster-tweets
-heroku create -a $APP_NAME
-heroku buildpacks:add -a $APP_NAME https://github.com/heroku/heroku-buildpack-multi-procfile
-heroku buildpacks:add heroku/python
-heroku config:set PROCFILE=app/Procfile
-git push heroku master
-```
