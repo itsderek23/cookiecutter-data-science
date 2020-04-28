@@ -13,12 +13,13 @@ def exec(desc,cmd):
         print("⚠️  (exit code= {})".format(exit_code))
         raise SystemExit("💣 Aborting install. An error occurred running the install script.")
 
-exec("Setting up venv","python -m venv {}/venv".format(os.getcwd()))
-exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt")
+exec("Setting up venv","python3 -m venv {}/venv".format(os.getcwd()))
+exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt > /dev/null")
 if os.system('git rev-parse > /dev/null 2>&1') != 0:
     exec("Initializing the Git repo", "git init")
 if os.system("venv/bin/dvc status > /dev/null 2>&1") != 0:
     exec("Initializing DVC","venv/bin/dvc init > /dev/null")
 if not os.path.isfile(".git/hooks/post-checkout"):
     exec("Installing Git hooks into the DVC repository","venv/bin/dvc install > /dev/null")
+exec("Setting up venv for Jupyter Notebooks","venv/bin/python -m ipykernel install --user --name=venv")
 print("👍 Install completed.")

@@ -19,6 +19,12 @@ $ pip install cookiecutter
 
     cookiecutter https://github.com/itsderek23/cookiecutter-data-science
 
+In addition to creating the directory structure (see below), projects are pre-initialized with the following:
+
+* A Git repo
+* A [venv](https://docs.python.org/3/library/venv.html) named `venv`
+* [DVC](https://dvc.org/) with [git hooks](https://dvc.org/doc/command-reference/install).
+* [Installs](https://anbasile.github.io/posts/2017-06-25-jupyter-venv/) an `ipykernel` kernel for use in Jupyter Notebooks for the `venv`
 
 ### The resulting directory structure
 ------------
@@ -74,6 +80,6 @@ The directory structure of your new project looks like this:
 
     pip install -r requirements.txt
 
-### Running the tests
+### Running tests
 
     pytest -s
