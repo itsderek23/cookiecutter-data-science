@@ -4,8 +4,10 @@
 import os
 import sys
 import getopt
+import fileinput
 
 LONG_OPTIONS = ["nbenv="]
+NOTEBOOK_EXAMPLE_PATH = "notebooks/example.ipynb"
 
 def parse_arguments(full_cmd_arguments):
     # Keep all but the first
@@ -49,8 +51,22 @@ def exec_setup(nbenv):
         exec("Initializing DVC","venv/bin/dvc init > /dev/null")
     if not os.path.isfile(".git/hooks/post-checkout"):
         exec("Installing Git hooks into the DVC repository","venv/bin/dvc install > /dev/null")
+    # Would rather use --sys-prefix, but not working:
+    # https://github.com/jupyter/notebook/issues/4567
     exec("Setting up venv for Jupyter Notebooks","venv/bin/python -m ipykernel install --user --name={}".format(nbenv))
+    set_example_notebook_kernel(nbenv)
 
+def set_example_notebook_kernel(nbenv):
+    # Read in the file
+    with open(NOTEBOOK_EXAMPLE_PATH, 'r') as file :
+      filedata = file.read()
+
+    # Replace the target string
+    filedata = filedata.replace("[PROJECT_NAME]", nbenv)
+
+    # Write the file out again
+    with open(NOTEBOOK_EXAMPLE_PATH, 'w') as file:
+        file.write(filedata)
 
 if __name__ == "__main__":
     arguments, values = parse_arguments(sys.argv)

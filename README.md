@@ -24,7 +24,7 @@ In addition to creating the directory structure (see below), projects are pre-in
 * A Git repo
 * A [venv](https://docs.python.org/3/library/venv.html) named `venv`
 * [DVC](https://dvc.org/) with [git hooks](https://dvc.org/doc/command-reference/install).
-* [Installs](https://anbasile.github.io/posts/2017-06-25-jupyter-venv/) an `ipykernel` kernel for use in Jupyter Notebooks for the `venv`
+* [Installs](https://anbasile.github.io/posts/2017-06-25-jupyter-venv/) an `ipykernel` kernel for use in Jupyter Notebooks w/name=`project_name`.
 
 ### The resulting directory structure
 ------------

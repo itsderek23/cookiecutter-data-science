@@ -1,3 +1,4 @@
+import os
 import sys
 import pytest
 import shutil
@@ -47,3 +48,5 @@ def default_baked_project(tmpdir_factory, request):
 
     # cleanup after
     shutil.rmtree(out_dir)
+    # jupyter kernelspec list
+    os.system("jupyter kernelspec uninstall {} -f".format(pn))
