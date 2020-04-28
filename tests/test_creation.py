@@ -35,7 +35,6 @@ def changed_files(root_path,ago):
             mtime = dt.datetime.fromtimestamp(st.st_mtime)
             if mtime > ago:
                 changed_files.append(path)
-                print('%s modified %s'%(path, mtime))
     return changed_files
 
 @pytest.mark.usefixtures("default_baked_project")
