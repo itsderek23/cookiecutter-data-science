@@ -10,7 +10,7 @@ def start(c):
     c.run("honcho -f app/Procfile.dev start", pty=True)
 
 def has_unstaged_changes():
-    res=subprocess.check_output("git status --porcelain",shell=True, text=True)
+    res=subprocess.check_output("git status --porcelain",shell=True, universal_newlines=True)
     return ("\n" in res)
 
 @task(help={'name': "Name of the Heroku app."})
