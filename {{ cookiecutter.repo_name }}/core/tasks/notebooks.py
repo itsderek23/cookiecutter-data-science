@@ -7,5 +7,5 @@ def run(c, relative_path):
     """
     Run a notebook from the command line.
     """
-    c.run("jupyter nbconvert --to notebook --ExecutePreprocessor.timeout=1000 --execute {}".format(relative_path))
+    c.run("jupyter nbconvert --clear-output --ExecutePreprocessor.timeout=1000 --execute {}".format(relative_path))
     sys.stdout.flush()
