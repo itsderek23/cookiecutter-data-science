@@ -28,7 +28,21 @@ app.create      Create a Heroku app for the web service.
 app.destroy     Delete the Heroku app.
 app.start       Start the web service serving model inference.
 app.test        Run the web service unit tests.
+model.predict   Invokes the model.
 notebooks.run   Run a notebook from the command line.
+```
+
+For details on a specific task, use `inv --h [TASK]`. For example:
+
+```
+inv -h notebooks.run
+Usage: inv[oke] [--core-opts] notebooks.run [--options] [other tasks here ...]
+
+Docstring:
+  Run a notebook from the command line.
+
+Options:
+  -r STRING, --relative-path=STRING
 ```
 
 ## venv

@@ -115,6 +115,13 @@ class TestCookieSetup(object):
         check_output(["venv/bin/inv", "notebooks.run", "notebooks/example.ipynb"],
                      cwd=self.path)
 
+    def test_model_predict(self):
+        # Running setup is slow, so by default setup=False.
+        if not pytest.param.get("setup"):
+            return
+        check_output(["venv/bin/inv", "model.predict", "[[1,2],[3,4]]"],
+                     cwd=self.path)
+
     def test_folders(self):
         expected_dirs = [
             'data',

@@ -1,21 +1,22 @@
 import flask
+from core.utils import dvc_pull
 from src.models.model_wrapper import ModelWrapper
 import sys
 import os
 
-def dvc_pull():
-    # The deployed app isn't a git repo but needs to be for dvc
-    os.system("git init")
-    # Pull the training output (the serialized model) when running on a deployed server.
-    #os.system("dvc pull train.dvc")
-
 # initialize the Flask application
 app = flask.Flask(__name__)
-dvc_pull()
+# Pull the output of the DVC stage used to generate the serialized model when running on a
+# deployed server. For example:
+# dvc_pull("train.dvc")
 model = ModelWrapper()
 
 @app.route("/predict", methods=["POST"])
 def predict():
+    """
+    Accepts a payload w/content-type="application/json" and expects a `data` key/value.
+    `data` is passed into the model for inference.
+    """
     input = flask.request.json['data']
     result = model.predict(input)
     return flask.jsonify(result)
