@@ -5,6 +5,7 @@ import os
 import sys
 import getopt
 import fileinput
+import subprocess
 
 LONG_OPTIONS = ["nbenv="]
 NOTEBOOK_EXAMPLE_PATH = "notebooks/example.ipynb"
@@ -35,7 +36,7 @@ def exec(desc,cmd):
     If the exit code is nonzero, raises a `SystemExit` execption.
     """
     print(desc+"...", end="", flush=True)
-    exit_code = os.system(cmd)
+    exit_code = subprocess.call(cmd, shell=True)
     if exit_code == 0:
         print("✓")
     else:
