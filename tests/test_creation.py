@@ -1,7 +1,7 @@
 import os
 import pytest
 import datetime as dt
-from subprocess import check_output
+from subprocess import check_output, CalledProcessError
 from conftest import system_check
 
 
@@ -114,6 +114,14 @@ class TestCookieSetup(object):
             return
         check_output(["venv/bin/inv", "notebooks.run", "notebooks/example.ipynb"],
                      cwd=self.path)
+
+    def test_app_create(self):
+        if not pytest.param.get("setup"):
+            return
+        with pytest.raises(CalledProcessError):
+            # Ensure we can run this task, but it fails because of uncommitted changes.
+            check_output(["venv/bin/inv", "app.create", "APPNAME"],
+                         cwd=self.path)
 
     def test_model_predict(self):
         # Running setup is slow, so by default setup=False.
