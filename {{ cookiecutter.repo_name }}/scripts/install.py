@@ -46,8 +46,9 @@ def exec(desc,cmd):
 def exec_setup(nbenv):
     exec("Setting up venv","python3 -m venv {}/venv".format(os.getcwd()))
     exec("Installing Python dependencies via pip","venv/bin/pip install -r requirements.txt > /dev/null")
-    if os.system('git rev-parse > /dev/null 2>&1') != 0:
-        exec("Initializing the Git repo", "git init")
+    print("Initializing the Git repo")
+    # Idempotent so just execute
+    os.system("git init > /dev/null 2>&1")
     if os.system("venv/bin/dvc status > /dev/null 2>&1") != 0:
         exec("Initializing DVC","venv/bin/dvc init > /dev/null")
         exec("Setting up default local DVC remote","venv/bin/dvc remote add -d local /tmp/dvc-storage")
