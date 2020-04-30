@@ -1,5 +1,6 @@
 import os
 from subprocess import check_output
+from pathlib import Path
 
 def dvc_pull(dvc_file):
     """
@@ -15,3 +16,10 @@ def dvc_pull(dvc_file):
     os.system("git init")
     # Pull the training output (the serialized model) when running on a deployed server.
     check_output(["dvc", "pull", dvc_file])
+
+def project_dir_name():
+    """
+    Returns a string w/the name of the project directory.
+    """
+    p = Path(os.getcwd())
+    return p.name
