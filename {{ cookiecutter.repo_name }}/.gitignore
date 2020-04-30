@@ -90,3 +90,6 @@ target/
 
 # venv
 venv/
+
+# DirEnv
+.envrc

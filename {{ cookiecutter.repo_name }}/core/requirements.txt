@@ -1,4 +1,5 @@
 # Requirements for the core cookiecutter template.
+
 click
 Sphinx
 coverage

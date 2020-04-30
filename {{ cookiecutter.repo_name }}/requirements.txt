@@ -1,8 +1,7 @@
 # local package
 -e .
 
-# cookiecutter template Requirements
--r core_requirements.txt
+# Core Project Requirements
+-r core/requirements.txt
 
-# Add your project-specific requirements below.
-# pandas
+### Add project-specific requirements below.
