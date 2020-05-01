@@ -9,13 +9,13 @@ ns = Collection.from_module(core.tasks)
 
 from src.models.model_wrapper import ModelWrapper
 
-@task(help={'data': "An array of data to perform model inference"})
+@task(help={'data': "A single record to perform model inference"})
 def predict(c, data):
     """
     Invokes the model.
     """
     model = ModelWrapper()
-    print(model.predict(data))
+    print(model.predict([data]))
 
 model = Collection('model')
 model.add_task(predict)
