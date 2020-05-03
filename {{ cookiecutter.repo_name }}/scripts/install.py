@@ -56,7 +56,7 @@ def exec_setup(nbenv):
         exec("Installing Git hooks into the DVC repository","venv/bin/dvc install > /dev/null")
     # Would rather use --sys-prefix, but not working:
     # https://github.com/jupyter/notebook/issues/4567
-    exec("Setting up venv for Jupyter Notebooks","venv/bin/python -m ipykernel install --user --name={}".format(nbenv))
+    exec("Setting up venv={} for Jupyter Notebooks".format(nbenv),"venv/bin/python -m ipykernel install --user --name={}".format(nbenv))
     set_example_notebook_kernel(nbenv)
     # direnv will fail if not installed
     os.system("cp .envrc.example .envrc")
